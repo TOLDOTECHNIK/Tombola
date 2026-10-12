@@ -1,0 +1,41 @@
+{
+  "name": "tombola-studio",
+  "version": "3.0.0",
+  "description": "Modern cross-platform tombola / raffle app (Neutralinojs + Vue 3 + Vite + Nuxt UI)",
+  "author": "TOLDO TECHNIK",
+  "license": "MIT",
+  "scripts": {
+    "dev": "node scripts/dist.mjs --restore-framework && vite build --emptyOutDir && neu run -- --window-enable-inspector",
+    "build": "node scripts/dist.mjs --build-only",
+    "start": "node scripts/dist.mjs --restore-framework && neu run",
+    "framework:update": "neu update",
+    "typecheck:node": "tsc --noEmit -p tsconfig.node.json",
+    "typecheck:web": "vue-tsc --noEmit -p tsconfig.web.json",
+    "typecheck": "npm run typecheck:node && npm run typecheck:web",
+    "dist": "node scripts/dist.mjs --platform all",
+    "dist:mac": "node scripts/dist.mjs --platform mac",
+    "dist:mac:intel": "node scripts/dist.mjs --platform mac --arch x64",
+    "dist:mac:silicon": "node scripts/dist.mjs --platform mac --arch arm64",
+    "dist:win": "node scripts/dist.mjs --platform win",
+    "dist:linux": "node scripts/dist.mjs --platform linux"
+  },
+  "devDependencies": {
+    "@iconify-json/lucide": "^1.2.0",
+    "@neutralinojs/lib": "^6.10.0",
+    "@neutralinojs/neu": "^11.8.0",
+    "@nuxt/ui": "^4.11.3",
+    "@resvg/resvg-js": "^2.6.2",
+    "@types/howler": "^2.2.12",
+    "@types/node": "^22.10.0",
+    "@vitejs/plugin-vue": "^6.0.10",
+    "howler": "^2.2.4",
+    "odometer": "^0.4.8",
+    "pdf-lib": "^1.17.1",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^5.9.0",
+    "vite": "^7.3.7",
+    "vue": "^3.5.43",
+    "vue-i18n": "^11.4.13",
+    "vue-tsc": "^3.3.12"
+  }
+}

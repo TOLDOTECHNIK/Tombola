@@ -1,0 +1,91 @@
+/* Themed odometer (used by the app and the exported tombola.html). */
+.tt-odometer {
+  font-size: clamp(1.8rem, 12cqw, 10rem);
+}
+
+.odometer.odometer-auto-theme {
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  border-radius: 0.34em;
+  background-image: linear-gradient(var(--tt-odometer-from, #ca1ba0), var(--tt-odometer-to, #70207f));
+  background-color: var(--tt-odometer-from, #ca1ba0);
+  font-family: 'Arvo', serif;
+  padding: 0.15em;
+  color: var(--tt-digit-text, #c41a9e);
+  line-height: 1.35em;
+  border: 0.03em solid rgba(255, 255, 255, 0.92);
+  box-shadow: 0 0.18em 0.5em rgba(0, 0, 0, 0.35);
+}
+
+.odometer.odometer-auto-theme .odometer-digit {
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  border-radius: 0.2em;
+  background-image: linear-gradient(var(--tt-digit-from, #fff), var(--tt-digit-to, #ccc));
+  border: 0.03em solid var(--tt-digit-border, #444);
+  padding: 0.1em 0.15em 0;
+  box-shadow:
+    inset 0 0 0.1em rgba(0, 0, 0, 0.5),
+    0 0 0 0.03em rgba(255, 255, 255, 0.9),
+    0 0 0 0.05em rgba(0, 0, 0, 0.2);
+}
+
+.odometer.odometer-auto-theme .odometer-digit .odometer-digit-spacer {
+  display: inline-block;
+  vertical-align: middle;
+  visibility: hidden;
+}
+
+.odometer.odometer-auto-theme .odometer-digit .odometer-digit-inner {
+  text-align: left;
+  display: block;
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  padding-top: 0.08em;
+}
+
+.odometer.odometer-auto-theme .odometer-digit .odometer-ribbon {
+  display: block;
+}
+
+.odometer.odometer-auto-theme .odometer-digit .odometer-ribbon-inner {
+  display: block;
+  backface-visibility: hidden;
+}
+
+.odometer.odometer-auto-theme .odometer-digit .odometer-value {
+  display: block;
+  transform: translateZ(0);
+}
+
+.odometer.odometer-auto-theme .odometer-digit .odometer-value.odometer-last-value {
+  position: absolute;
+}
+
+.odometer.odometer-auto-theme .odometer-digit + .odometer-digit {
+  margin-left: 0.15em;
+}
+
+.odometer.odometer-auto-theme .odometer-digit .odometer-digit-inner,
+.odometer.odometer-auto-theme .odometer-digit .odometer-value.odometer-last-value {
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+.odometer.odometer-auto-theme.odometer-animating-up .odometer-ribbon-inner {
+  transition: transform var(--tt-roll-duration, 7s) cubic-bezier(0.15, 0.7, 0.15, 1);
+}
+.odometer.odometer-auto-theme.odometer-animating-up.odometer-animating .odometer-ribbon-inner {
+  transform: translateY(-100%);
+}
+.odometer.odometer-auto-theme.odometer-animating-down .odometer-ribbon-inner {
+  transform: translateY(-100%);
+}
+.odometer.odometer-auto-theme.odometer-animating-down.odometer-animating .odometer-ribbon-inner {
+  transition: transform var(--tt-roll-duration, 7s) cubic-bezier(0.15, 0.7, 0.15, 1);
+  transform: translateY(0);
+}

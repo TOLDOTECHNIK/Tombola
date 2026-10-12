@@ -1,0 +1,219 @@
+@import 'tailwindcss';
+@import '@nuxt/ui';
+@import './odometer.css';
+
+@font-face {
+  font-family: 'Rye';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src:
+    local('Rye Regular'),
+    local('Rye-Regular'),
+    url('/fonts/Rye.woff2') format('woff2'),
+    url('/fonts/Rye.woff') format('woff');
+}
+@font-face {
+  font-family: 'Arizonia';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src:
+    local('Arizonia'),
+    local('Arizonia-Regular'),
+    url('/fonts/Arizona.woff2') format('woff2'),
+    url('/fonts/Arizona.woff') format('woff');
+}
+@font-face {
+  font-family: 'Arvo';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src:
+    local('Arvo Bold'),
+    local('Arvo-Bold'),
+    url('/fonts/Arvo-Bold.woff2') format('woff2'),
+    url('/fonts/Arvo-Bold.woff') format('woff');
+}
+
+:root {
+  --tt-roll-duration: 7s;
+}
+
+html,
+body,
+#app {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  overflow: hidden;
+}
+
+/* ------------------------------------------------------------------ */
+/* Tombola stage                                                       */
+/* ------------------------------------------------------------------ */
+
+.tt-stage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  container-type: size;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+  background-image:
+    linear-gradient(var(--tt-overlay, transparent), var(--tt-overlay, transparent)),
+    var(--tt-background, linear-gradient(#1a1a2e, #0f0f1a));
+  background-size: cover, cover;
+  background-position: center, center;
+  background-repeat: no-repeat, no-repeat;
+  color: #fff;
+  user-select: none;
+}
+
+.tt-stage--preview {
+  border-radius: 0.75rem;
+}
+
+.tt-title {
+  padding-top: 2rem;
+  font-family: var(--tt-title-font, 'Arizonia', cursive);
+  color: var(--tt-title-color, #fff);
+  font-size: clamp(1rem, 6cqw, 4.5rem);
+  line-height: 1.1;
+  text-shadow:
+    0 15px 29px rgba(0, 0, 0, 0.35),
+    10px 20px 5px rgba(0, 0, 0, 0.12),
+    -10px 20px 5px rgba(0, 0, 0, 0.12);
+  text-align: center;
+  max-width: 92%;
+  overflow-wrap: anywhere;
+}
+
+.tt-prize-label {
+  padding-top: 0.5rem;
+  font-family: 'Arvo', serif;
+  color: var(--tt-label-color, #fff);
+  font-size: clamp(0.6rem, 1.7cqw, 1.6rem);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.9;
+}
+
+.tt-prize-name {
+  font-family: var(--tt-prize-font, 'Rye', serif);
+  color: var(--tt-prize-color, #fff);
+  font-size: clamp(0.95rem, 5.4cqw, 4rem);
+  text-align: center;
+  text-shadow:
+    0 0 10px var(--tt-prize-glow, transparent),
+    0 0 24px var(--tt-prize-glow, transparent),
+    0 0 40px var(--tt-prize-glow, transparent);
+  padding: 0.25rem 1rem;
+  overflow-wrap: anywhere;
+}
+
+.tt-prize-name--pulse {
+  animation: tt-pulse 2.6s ease-in-out infinite;
+}
+
+@keyframes tt-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.045);
+  }
+}
+
+.tt-prize-enter {
+  animation: tt-prize-in 0.28s ease both;
+}
+
+@keyframes tt-prize-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.tt-center {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  width: 100%;
+  min-height: 0;
+}
+
+.tt-footer {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding-bottom: 1rem;
+}
+
+.tt-footer-wrap {
+  width: 100%;
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+
+.tt-footer-wrap--hidden {
+  opacity: 0;
+  transform: translateY(120%);
+  pointer-events: none;
+}
+
+.tt-chip {
+  font-family: 'Arvo', serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  padding: 0.3rem 0.8rem;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(6px);
+}
+
+.tt-hidden-cursor,
+.tt-hidden-cursor * {
+  cursor: none !important;
+}
+
+/* ------------------------------------------------------------------ */
+/* Theme thumbnail swatches                                            */
+/* ------------------------------------------------------------------ */
+
+.tt-theme-swatch {
+  aspect-ratio: 16 / 9;
+  background-size: cover;
+  background-position: center;
+  border-radius: 0.5rem;
+}
+
+/* ------------------------------------------------------------------ */
+/* Ticket (Lose) previews                                              */
+/* ------------------------------------------------------------------ */
+
+.ticket-mini svg,
+.ticket-preview svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 0.4rem;
+}

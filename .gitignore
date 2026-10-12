@@ -1,0 +1,10 @@
+node_modules/
+dist/
+www/
+bin/
+.tmp/
+.storage/
+.DS_Store
+*.log
+.nuxt/
+.ui/

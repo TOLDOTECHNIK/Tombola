@@ -1,0 +1,62 @@
+{
+  "$schema": "https://raw.githubusercontent.com/neutralinojs/neutralinojs/main/schemas/neutralino.config.schema.json",
+  "applicationId": "com.tombolastudio.app",
+  "applicationName": "Tombola Studio",
+  "version": "3.0.0",
+  "description": "Modern cross-platform tombola / raffle app",
+  "author": "Tombola Studio",
+  "copyright": "TOLDO TECHNIK",
+  "defaultMode": "window",
+  "port": 0,
+  "documentRoot": "/www/",
+  "url": "/",
+  "enableServer": true,
+  "enableNativeAPI": true,
+  "tokenSecurity": "one-time",
+  "dataLocation": "system",
+  "storageLocation": "system",
+  "logging": {
+    "enabled": true,
+    "writeToLogFile": true
+  },
+  "nativeAllowList": [
+    "app.exit",
+    "app.killProcess",
+    "window.*",
+    "events.*",
+    "os.showOpenDialog",
+    "os.showSaveDialog",
+    "filesystem.*"
+  ],
+  "serverHeaders": {
+    "Content-Security-Policy": "default-src 'self'; img-src 'self' data: blob:; media-src 'self' data: blob:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; script-src 'self'; connect-src 'self'"
+  },
+  "modes": {
+    "window": {
+      "title": "Tombola Studio",
+      "width": 1360,
+      "height": 880,
+      "minWidth": 1024,
+      "minHeight": 680,
+      "icon": "/www/icon.png",
+      "enableInspector": false,
+      "injectGlobals": true,
+      "exitProcessOnClose": false,
+      "useSavedState": true,
+      "newWindowPolicy": "browser",
+      "menu": false
+    }
+  },
+  "cli": {
+    "binaryName": "tombola-studio",
+    "resourcesPath": "/www/",
+    "binaryVersion": "6.10.0",
+    "clientVersion": "6.10.0",
+    "frontendLibrary": {
+      "projectPath": "/",
+      "devCommand": "vite",
+      "devUrl": "http://localhost:5173",
+      "buildCommand": "vite build"
+    }
+  }
+}
