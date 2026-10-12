@@ -92,11 +92,13 @@ Inside that folder:
 
 ---
 
-## Buzzer project (coming soon)
+## Buzzer project
 
-We also built a hardware **buzzer**! The buzzer connects to the app via **BLE**
+We also built a hardware **quiz buzzer**! The buzzer connects to the app via **BLE**
 (Bluetooth Low Energy — the same low-power Bluetooth as fitness bracelets) and lets the
 players or host control the game.
+
+You can find the hardware project at [GitHub](https://github.com/TOLDOTECHNIK/BLE-Quiz-Buzzer).
 
 ---
 
